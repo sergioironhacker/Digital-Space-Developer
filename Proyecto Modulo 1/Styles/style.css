@@ -1,7 +1,19 @@
 body {
   margin: 0;
   padding: 0;
+  height: 100%;
+  overflow: hidden;
   
+}
+
+
+#lives {
+  color: greenyellow;
+  font-weight:bold
+}
+
+i {
+  color: tomato;
 }
 
 #game-board {
@@ -12,7 +24,28 @@ body {
   overflow: hidden;
 }
 
+.center-image {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
 
+.center-button {
+  position: absolute;
+  top: 70%;
+  left: 51%;
+  transform: translate(-50%, -50%);
+  background-color: rgb(244, 213, 71);
+  color:  rgb( 9, 70, 127);
+  width: 100px;
+  height: 60px;
+  font-weight: bold;
+  font-size: 16px;
+  border-radius: 50%;
+  border: 2px solid rgb( 9, 70, 127);
+  cursor: pointer;
+}
 
 
 
