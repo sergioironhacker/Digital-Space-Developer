@@ -5,17 +5,26 @@ body {
 }
 
 #game-board {
-  background-image: url(../Assets/espacio.jpg);
+  background-image: url(../assets/espacio.jpg);
   background-repeat: no-repeat;
   background-size: cover;
   height: 100vh;
   overflow: hidden;
 }
 
-.nave {
+
+
+
+
+
+
+
+
+
+/*.nave {
   width: 180px;
   height: 180px;
-  background-image: url("../Assets/nave.png");
+  background-image: url("../assets/nave.png");
   background-repeat: no-repeat;
   background-size: cover;
   position: absolute;

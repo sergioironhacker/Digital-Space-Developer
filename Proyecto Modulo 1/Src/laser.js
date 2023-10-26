@@ -22,11 +22,20 @@ class Laser {
         this.element.style.boxShadow = "0px 0px 20px 10px #0ff";
 
         this.container.appendChild(this.element);
-
+        this.move();
 
     }
     move() {
         this.y -= this.vy;
         this.element.style.top = `${this.y}px`;
+        if (this.y < 0) {
+            this.container.removeChild(this.element);
+        } else {
+            
+            requestAnimationFrame(() => this.move());
+        }
+
+
+
     }
 }
