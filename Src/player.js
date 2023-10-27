@@ -1,8 +1,8 @@
  class Player {
     constructor(container) {
         this.container = container;
-        this.width = 100;
-        this.height = 100;
+        this.width = 120;
+        this.height = 120;
         this.x = (this.container.offsetWidth / 2) - (this.width / 2);
         this.y = this.container.offsetHeight - this.height - 20;
         this.bullets = [];
@@ -28,12 +28,13 @@
     }
 
     shoot() {
-        const playerX = this.x + this.width / 2 - 5;
+        const playerX = this.x + this.width / 14;
+        const playerY = this.y + this.height ; 
         this.bullets.push(
             new Laser(
                 this.container,
-                this.x,
                 playerX,
+                playerY,
             )
         );
     }

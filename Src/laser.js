@@ -5,8 +5,8 @@ class Laser {
         this.height = 50;
 
 
-        this.x = x;
-        this.y = y;
+        this.x = x - this.width / 2;
+        this.y = y - this.height -40;
 
         this.vy = 10;
 
