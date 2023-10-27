@@ -8,8 +8,13 @@ body {
 
 
 #lives {
+  position: absolute;
+  top: 20px;
+  left:20px;
+  padding: 10px;
   color: greenyellow;
   font-weight:bold
+  
 }
 
 i {
@@ -47,6 +52,41 @@ i {
   cursor: pointer;
 }
 
+
+
+#countdown {
+  position: absolute;
+  color: greenyellow;
+  right: 20px;
+  top: 20px;
+  font-weight: bold;
+  background-color: none;
+  padding: 10px;
+ 
+}
+
+
+#timer {
+  color: tomato
+}
+
+
+#score {
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  color: greenyellow;
+  font-weight: bold;
+  background-color: none;
+  padding: 10px;
+  
+ 
+}
+
+
+#points {
+  color: tomato
+}
 
 
 
