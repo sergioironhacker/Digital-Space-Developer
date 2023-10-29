@@ -4,9 +4,17 @@ window.addEventListener("load", () => {
     const container = document.getElementById("game-board");
     const backgroundMusic = document.getElementById("background-music");
     const timerElement = document.getElementById("timer");
+    const playMusicButton = document.getElementById("play-music-button");
+
     let game = null;
     let timeLeft = 30;
     let timerInterval;
+
+
+    playMusicButton.addEventListener('click', () => {
+    backgroundMusic.play();
+    playMusicButton.style.display = 'none'; // Oculta el botón después de iniciar la música.
+});
     
 
     function updateTimer() {
@@ -18,9 +26,9 @@ window.addEventListener("load", () => {
         
           clearInterval(timerInterval);
         }
-      }
+    }
     
-
+  
 
     backgroundMusic.play();
   
@@ -29,10 +37,10 @@ window.addEventListener("load", () => {
     
     startContainer.style.display = 'none';
     startButton.style.display = 'none';
-
+    backgroundMusic.pause();
     timerInterval = setInterval(updateTimer, 1000);
 
-    backgroundMusic.pause();
+
 
     
     game = new Game(container);
