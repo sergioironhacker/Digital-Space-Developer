@@ -42,7 +42,6 @@ class Words {
     }
 
 
-    /////////////
     update() {
         const currentTime = Date.now();
         if (currentTime - this.lastSpawnTime >= this.spawnInterval) {
@@ -70,8 +69,8 @@ class Words {
             this.player.bullets.forEach((bullet) => {
                 if (bullet.checkCollision(word.element)) {
 
-                    // Aqui actualizas el score
-
+                  
+                    // 
                     
 
                     bullet.element.remove()
@@ -87,7 +86,7 @@ class Words {
         requestAnimationFrame(() => this.update());
     }
 
-    ///////////////////
+    
 
     getRandomWord() {
         const wordSet = this.allWords[Math.floor(Math.random() * this.allWords.length)];

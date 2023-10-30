@@ -26,7 +26,6 @@ class Laser {
         this.animationId = null
     }
 
-    ////////////
     checkCollision(wordElement) {
         const laserRect = this.element.getBoundingClientRect();
         const wordRect = wordElement.getBoundingClientRect();
@@ -38,17 +37,11 @@ class Laser {
             laserRect.top < wordRect.bottom
         ) {
             return true
-
-            // this.container.removeChild(wordElement);
-            // this.container.removeChild(this.element);
-            // const wordIndex = this.activeWords.findIndex((word) => word.element === wordElement);
-            // if (wordIndex !== -1) {
-            //     this.activeWords.splice(wordIndex, 1);
-            // }
+  
         }
     }
 
-    /////////////
+   
 
 
     move() {

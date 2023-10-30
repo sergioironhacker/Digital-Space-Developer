@@ -20,9 +20,9 @@ window.addEventListener("load", () => {
     }
     
     document.addEventListener('keydown', (e) => {
-        if (e.keyCode === 32) { // 32 es el código de tecla para "Espacio"
+        if (e.keyCode === 32) { 
             toggleMusic();
-            playMusicButton.style.display = 'none'; // Oculta el botón después de iniciar la música.
+            playMusicButton.style.display = 'none'; 
         }
     });
 

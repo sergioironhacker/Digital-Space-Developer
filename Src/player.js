@@ -19,10 +19,7 @@
         this.element.style.height = `${this.height}px`;
         this.element.style.left = `${this.x}px`;
         this.element.style.top = `${this.y}px`;
-       // this.element.style.borderRadius = "15px";
-        // this.element.style.boxShadow = "0px 0px 20px 10px #fff";
-       
-
+      
 
         this.container.appendChild(this.element);
     }
