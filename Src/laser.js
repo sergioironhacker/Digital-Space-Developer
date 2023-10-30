@@ -6,12 +6,11 @@ class Laser {
 
 
         this.x = x - this.width / 2;
-        this.y = y - this.height -40;
+        this.y = y - this.height - 40;
 
         this.vy = 10;
 
         this.element = document.createElement("div");
-
         this.element.style.position = "absolute";
         this.element.style.width = `${this.width}px`;
         this.element.style.height = `${this.height}px`;
@@ -24,18 +23,42 @@ class Laser {
         this.container.appendChild(this.element);
         this.move();
 
+        this.animationId = null
     }
+
+    ////////////
+    checkCollision(wordElement) {
+        const laserRect = this.element.getBoundingClientRect();
+        const wordRect = wordElement.getBoundingClientRect();
+
+        if (
+            laserRect.right > wordRect.left &&
+            laserRect.left < wordRect.right &&
+            laserRect.bottom > wordRect.top &&
+            laserRect.top < wordRect.bottom
+        ) {
+            return true
+
+            // this.container.removeChild(wordElement);
+            // this.container.removeChild(this.element);
+            // const wordIndex = this.activeWords.findIndex((word) => word.element === wordElement);
+            // if (wordIndex !== -1) {
+            //     this.activeWords.splice(wordIndex, 1);
+            // }
+        }
+    }
+
+    /////////////
+
+
     move() {
         this.y -= this.vy;
         this.element.style.top = `${this.y}px`;
         if (this.y < 0) {
             this.container.removeChild(this.element);
         } else {
-            
-            requestAnimationFrame(() => this.move());
+
+            this.animationId = requestAnimationFrame(() => this.move());
         }
-
-
-
     }
 }

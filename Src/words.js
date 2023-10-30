@@ -1,12 +1,13 @@
 class Words {
-    constructor(container, playerPosY, playerHeight) {
+    constructor(container, player) {
         this.container = container;
         this.width = 50;
         this.height = 50;
-        this.posY = playerPosY - playerHeight;
+        // this.posY = playerPosY - playerHeight;
 
         this.activeWords = [];
-        this.playerPosY = playerPosY;
+        this.player = player;
+        this.playerPosY = player.y;
 
         this.allWords = [
             ["variable", "funcion", "if", "else", "for", "while", "console",
@@ -20,11 +21,11 @@ class Words {
                 "haskell", "ironHack", "prolog"]
         ];
 
-        //  setInterval(() => this.createAndMoveWord(), 3000);
+
 
         this.lastSpawnTime = 0;
-        this.spawnInterval = 3000; // Tiempo en milisegundos entre la aparición de nuevas palabras
-        this.wordSpeed = 2; // Velocidad de caída constante
+        this.spawnInterval = 3000;
+        this.wordSpeed = 2;
 
         this.update();
 
@@ -40,6 +41,8 @@ class Words {
         this.activeWords.push({ element: wordElement, posY, speed: this.wordSpeed });
     }
 
+
+    /////////////
     update() {
         const currentTime = Date.now();
         if (currentTime - this.lastSpawnTime >= this.spawnInterval) {
@@ -53,21 +56,38 @@ class Words {
             word.element.style.top = word.posY + "px";
 
             if (word.posY > this.playerPosY) {
-                // Comprueba si la palabra llega al jugador
-                // Aquí puedes agregar la lógica para manejar la colisión
-                // Por ejemplo, eliminar la palabra y restar puntos al jugador
-                // this.container.removeChild(word.element);
-                // this.activeWords.splice(i, 1);
+
+
+                this.container.removeChild(word.element);
+                this.activeWords.splice(i, 1);
             }
 
             if (word.posY > this.container.offsetHeight) {
                 this.container.removeChild(word.element);
                 this.activeWords.splice(i, 1);
             }
+
+            this.player.bullets.forEach((bullet) => {
+                if (bullet.checkCollision(word.element)) {
+
+                    // Aqui actualizas el score
+
+                    
+
+                    bullet.element.remove()
+                    word.element.remove()
+                    this.activeWords = this.activeWords.filter(activeWord => activeWord !== word)
+                    window.cancelAnimationFrame(bullet.animationId)
+                    this.player.bullets = this.player.bullets.filter(activeBullet => activeBullet !== bullet)
+                }
+            })
+
         }
 
         requestAnimationFrame(() => this.update());
     }
+
+    ///////////////////
 
     getRandomWord() {
         const wordSet = this.allWords[Math.floor(Math.random() * this.allWords.length)];
@@ -85,14 +105,12 @@ class Words {
         wordElement.style.top = posY + "px";
         wordElement.style.transition = "color 1s";
         wordElement.style.color = "white";
-
-
-         //wordElement.style.textShadow = "8px 8px 10px rgba(0, 0, 255, 1)";
-         wordElement.style.textShadow = "-8px -8px 10px rgba(0, 0, 255, 0.8), 8px -8px 10px rgba(0, 0, 255, 0.8), -8px 8px 10px rgba(0, 0, 255, 0.8), 8px 8px 10px rgba(0, 0, 255, 0.8)";
+        // wordElement.style.textShadow = "8px 8px 10px rgba(0, 0, 255, 1)";
+        wordElement.style.textShadow = "-8px -8px 10px rgba(0, 0, 255, 0.8), 8px -8px 10px rgba(0, 0, 255, 0.8), -8px 8px 10px rgba(0, 0, 255, 0.8), 8px 8px 10px rgba(0, 0, 255, 0.8)";
 
 
         setTimeout(() => {
-        wordElement.style.color = "yellow";
+            wordElement.style.color = "yellow";
         }, 2000);
 
         return wordElement;

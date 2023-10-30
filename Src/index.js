@@ -11,11 +11,25 @@ window.addEventListener("load", () => {
     let timerInterval;
 
 
-    playMusicButton.addEventListener('click', () => {
-    backgroundMusic.play();
-    playMusicButton.style.display = 'none'; // Oculta el botón después de iniciar la música.
-});
+    function toggleMusic() {
+        if (backgroundMusic.paused) {
+            backgroundMusic.play();
+        } else {
+            backgroundMusic.pause();
+        }
+    }
     
+    document.addEventListener('keydown', (e) => {
+        if (e.keyCode === 32) { // 32 es el código de tecla para "Espacio"
+            toggleMusic();
+            playMusicButton.style.display = 'none'; // Oculta el botón después de iniciar la música.
+        }
+    });
+
+
+
+
+
 
     function updateTimer() {
         timerElement.textContent = timeLeft;
@@ -30,7 +44,7 @@ window.addEventListener("load", () => {
     
   
 
-    backgroundMusic.play();
+    
   
 
    startButton.addEventListener('click', () => {
