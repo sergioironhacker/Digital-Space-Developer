@@ -24,7 +24,18 @@ class Laser {
         this.explosionElement = explosionElement;
 
 
+        this.audioElement = document.getElementById("laser-sound");
+        this.playLaserSound();
     }
+
+    playLaserSound() {
+        if (this.audioElement) {
+            this.audioElement.currentTime = 0;
+            this.audioElement.play();
+        }
+    }
+
+    
 
     checkCollision(wordElement) {
    
@@ -38,11 +49,23 @@ class Laser {
             laserRect.top < wordRect.bottom
         ) {
             this.showExplosion(wordRect.left, wordRect.top, wordRect.width, wordRect.height);
+            this.playExplosionSound();
             return true;
         }
 
         return false;
     }
+    
+    playExplosionSound() {
+        const explosionSound = document.getElementById("explosion-sound");
+        if (explosionSound) {
+            explosionSound.currentTime = 0;
+            explosionSound.play();
+        }
+    }
+
+
+
 
     showExplosion(x, y, width, height) {
        

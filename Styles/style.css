@@ -13,8 +13,8 @@ body {
   left:20px;
   padding: 10px;
   color: greenyellow;
-  font-weight:bold
-  
+  font-weight:bold;
+  font-size: 24px;
 }
 
 i {
@@ -62,6 +62,7 @@ i {
   font-weight: bold;
   background-color: none;
   padding: 10px;
+  font-size: 24px;
  
 }
 
@@ -79,6 +80,7 @@ i {
   font-weight: bold;
   background-color: none;
   padding: 10px;
+  font-size: 24px;
   
  
 }
@@ -93,8 +95,7 @@ i {
   position: absolute;
   width: 40px;
   height: 40px;
-  background-color: grey;
-  color: #fff; 
+  background-color: #021c5f;
   padding: 10px; 
   border: none; 
   border-radius: 50%; 
