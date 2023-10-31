@@ -12,7 +12,7 @@
 <body>
     <audio id="background-music" loop>
         <source src="./assets/sounds/bcmusic.mp3">
-      </audio>
+    </audio>
     <img src="./assets/intro.png" id="background-image" class="center-image">
     <button id="start-button" class="center-button">Start Game</button>
 
@@ -23,10 +23,12 @@
 
 
 
-    <div id="game-board"> 
-        <!-- aqui va todo el juego -->
+    <div id="game-board">
 
 
+        <div id="explosion" style="display: none;">
+            <img src="./assets/explosion.gif" id="explosion">
+        </div>
         <div id="countdown">Tiempo restante: <span id="timer">30</span></div>
 
         <div id="score">Score: <span id="points">0</span></div>
@@ -34,10 +36,10 @@
         <span id="lives">Lives:<i> 5</i></span>
 
 
-       
+
     </div>
-    <script src ="./src/words.js"></script>
-    <script src ="./src/laser.js"></script>
+    <script src="./src/words.js"></script>
+    <script src="./src/laser.js"></script>
     <script src="./src/player.js"></script>
     <script src="./src/game.js"></script>
     <script src="./src/index.js"></script>

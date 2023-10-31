@@ -104,7 +104,14 @@ i {
 
 }
 
+#explosion {
+  position: absolute;
+  display: none;
+  background: url('../assets/explosion.gif');
+  width: 200px;
+  height: 200px;
+  background-position: center;
+  border-radius: 50%;
 
-
-
+}
 

@@ -26,7 +26,7 @@
 
     shoot() {
         const playerX = this.x + this.width / 14;
-        const playerY = this.y + this.height ; 
+        const playerY = this.y + this.height; 
         this.bullets.push(
             new Laser(
                 this.container,

@@ -55,8 +55,6 @@ class Words {
             word.element.style.top = word.posY + "px";
 
             if (word.posY > this.playerPosY) {
-
-
                 this.container.removeChild(word.element);
                 this.activeWords.splice(i, 1);
             }
@@ -68,18 +66,20 @@ class Words {
 
             this.player.bullets.forEach((bullet) => {
                 if (bullet.checkCollision(word.element)) {
-
-                  
-                    // 
-                    
-
+                    bullet.showExplosion(
+                        word.element.offsetLeft,
+                        word.element.offsetTop,
+                        word.element.offsetWidth,
+                        word.element.offsetHeight
+                    );
                     bullet.element.remove()
                     word.element.remove()
                     this.activeWords = this.activeWords.filter(activeWord => activeWord !== word)
                     window.cancelAnimationFrame(bullet.animationId)
                     this.player.bullets = this.player.bullets.filter(activeBullet => activeBullet !== bullet)
+                   
                 }
-            })
+            });
 
         }
 
@@ -104,7 +104,6 @@ class Words {
         wordElement.style.top = posY + "px";
         wordElement.style.transition = "color 1s";
         wordElement.style.color = "white";
-        // wordElement.style.textShadow = "8px 8px 10px rgba(0, 0, 255, 1)";
         wordElement.style.textShadow = "-8px -8px 10px rgba(0, 0, 255, 0.8), 8px -8px 10px rgba(0, 0, 255, 0.8), -8px 8px 10px rgba(0, 0, 255, 0.8), 8px 8px 10px rgba(0, 0, 255, 0.8)";
 
 
@@ -115,8 +114,6 @@ class Words {
         return wordElement;
     }
 }
-
-
 
 
 

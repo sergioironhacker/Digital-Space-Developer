@@ -1,13 +1,10 @@
 class Laser {
-    constructor(container, x, y) {
+    constructor(container, x, y, explosionElement) {
         this.container = container;
         this.width = 10;
         this.height = 50;
-
-
         this.x = x - this.width / 2;
         this.y = y - this.height - 40;
-
         this.vy = 10;
 
         this.element = document.createElement("div");
@@ -24,9 +21,13 @@ class Laser {
         this.move();
 
         this.animationId = null
+        this.explosionElement = explosionElement;
+
+
     }
 
     checkCollision(wordElement) {
+   
         const laserRect = this.element.getBoundingClientRect();
         const wordRect = wordElement.getBoundingClientRect();
 
@@ -36,12 +37,28 @@ class Laser {
             laserRect.bottom > wordRect.top &&
             laserRect.top < wordRect.bottom
         ) {
-            return true
-  
+            this.showExplosion(wordRect.left, wordRect.top, wordRect.width, wordRect.height);
+            return true;
         }
+
+        return false;
     }
 
-   
+    showExplosion(x, y, width, height) {
+       
+        const explosionElement = document.getElementById("explosion"); 
+        if(explosionElement) {    
+        explosionElement.style.left = x + "px";
+        explosionElement.style.top = y + "px";
+        explosionElement.style.width = width + "200 px";
+        explosionElement.style.height = height + "200 px";
+        explosionElement.style.display = "block";
+        
+        setTimeout(() => {
+            explosionElement.style.display = "none";
+        }, 1000);
+    }
+}
 
 
     move() {
