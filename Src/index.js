@@ -5,12 +5,28 @@ window.addEventListener("load", () => {
     const backgroundMusic = document.getElementById("background-music");
     const timerElement = document.getElementById("timer");
     const playMusicButton = document.getElementById("play-music-button");
-    const explosionElement = document.getElementById("explosion");
+    const instructionsButton = document.getElementById("instructions-button");
+    const instructions = document.getElementById("instructions");
 
 
     let game = null;
     let timeLeft = 30;
     let timerInterval;
+
+
+
+    instructionsButton.addEventListener("click", () => {
+        if (instructions.style.display === "none" || instructions.style.display === "") {
+            instructions.style.display = "block";
+        } else {
+            instructions.style.display = "none";
+        }
+    });
+
+
+
+
+
 
 
     function toggleMusic() {
@@ -50,7 +66,7 @@ window.addEventListener("load", () => {
 
 
     startButton.addEventListener('click', () => {
-
+        instructionsButton.style.display = "none";
         startContainer.style.display = 'none';
         startButton.style.display = 'none';
         backgroundMusic.pause();

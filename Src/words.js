@@ -96,19 +96,19 @@ class Words {
     createWordElement(word, posX, posY) {
         const wordElement = document.createElement("div");
         wordElement.textContent = word;
-        wordElement.style.color = "white";
+        wordElement.style.color = "green";
         wordElement.style.fontFamily = "Arial";
         wordElement.style.fontSize = "24px";
         wordElement.style.position = "absolute";
         wordElement.style.left = posX + "px";
         wordElement.style.top = posY + "px";
-        wordElement.style.transition = "color 1s";
-        wordElement.style.color = "white";
+        wordElement.style.transition = "color 2s";
+        wordElement.style.color = "yellow";
         wordElement.style.textShadow = "-8px -8px 10px rgba(0, 0, 255, 0.8), 8px -8px 10px rgba(0, 0, 255, 0.8), -8px 8px 10px rgba(0, 0, 255, 0.8), 8px 8px 10px rgba(0, 0, 255, 0.8)";
 
 
         setTimeout(() => {
-            wordElement.style.color = "yellow";
+            wordElement.style.color = "red";
         }, 2000);
 
         return wordElement;
