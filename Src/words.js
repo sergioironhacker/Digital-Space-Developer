@@ -3,7 +3,6 @@ class Words {
         this.container = container;
         this.width = 50;
         this.height = 50;
-        // this.posY = playerPosY - playerHeight;
 
         this.activeWords = [];
         this.player = player;
@@ -89,7 +88,7 @@ class Words {
                     } else {
                         this.player.updateLives();
                         if (this.player.lives < 1) {
-                            this.stop();
+                            this.game.stop();
                         }
                     }
                 }

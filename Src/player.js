@@ -6,7 +6,7 @@ class Player {
         this.x = (this.container.offsetWidth / 2) - (this.width / 2);
         this.y = this.container.offsetHeight - this.height - 20;
         this.bullets = [];
-        this.lives = 3;
+        this.lives = 5;
         this.score = 0;
 
 

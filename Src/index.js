@@ -10,7 +10,7 @@ window.addEventListener("load", () => {
 
 
     let game = null;
-    let timeLeft = 15;
+    let timeLeft = 60;
     let timerInterval;
 
 
@@ -46,7 +46,7 @@ window.addEventListener("load", () => {
         timerElement.textContent = timeLeft;
         timeLeft--;
         
-        if (timeLeft < 0) {
+        if (timeLeft < 0 || game.player.lives === 0) {
             clearInterval(timerInterval);
             game.words.stop();
         }
