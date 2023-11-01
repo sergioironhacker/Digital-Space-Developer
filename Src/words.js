@@ -8,7 +8,7 @@ class Words {
         this.activeWords = [];
         this.player = player;
         this.playerPosY = player.y;
-
+        this.keepUpdating = true;
         this.allWords = [
             ["variable", "funcion", "if", "else", "for", "while", "console",
                 "array", "object", "return", "true", "false", "null", "undefined",
@@ -26,6 +26,7 @@ class Words {
         this.lastSpawnTime = 0;
         this.spawnInterval = 3000;
         this.wordSpeed = 2;
+        this.animationId = null;
 
         this.update();
 
@@ -38,11 +39,16 @@ class Words {
         const wordElement = this.createWordElement(randomWord, posX, posY);
 
         this.container.appendChild(wordElement);
-        this.activeWords.push({ element: wordElement, posY, speed: this.wordSpeed });
+        this.activeWords.push({ element: wordElement, posY, speed: this.wordSpeed, name: randomWord });
+    }
+
+    stop() {
+        window.cancelAnimationFrame(this.animationId);
     }
 
 
     update() {
+
         const currentTime = Date.now();
         if (currentTime - this.lastSpawnTime >= this.spawnInterval) {
             this.createAndMoveWord();
@@ -77,16 +83,23 @@ class Words {
                     this.activeWords = this.activeWords.filter(activeWord => activeWord !== word)
                     window.cancelAnimationFrame(bullet.animationId)
                     this.player.bullets = this.player.bullets.filter(activeBullet => activeBullet !== bullet)
-                   
+                    
+                    if (this.allWords[0].includes(word.name)) {
+                        this.player.updateScore();
+                    } else {
+                        this.player.updateLives();
+                        if (this.player.lives < 1) {
+                            this.stop();
+                        }
+                    }
                 }
             });
 
         }
 
-        requestAnimationFrame(() => this.update());
-    }
+        this.animationId = requestAnimationFrame(() => this.update());
 
-    
+    }
 
     getRandomWord() {
         const wordSet = this.allWords[Math.floor(Math.random() * this.allWords.length)];
