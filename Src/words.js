@@ -8,7 +8,7 @@ class Words {
         this.activeWords = [];
         this.player = player;
         this.playerPosY = player.y;
-
+        this.keepUpdating = true;
         this.allWords = [
             ["variable", "funcion", "if", "else", "for", "while", "console",
                 "array", "object", "return", "true", "false", "null", "undefined",
@@ -41,52 +41,60 @@ class Words {
         this.activeWords.push({ element: wordElement, posY, speed: this.wordSpeed });
     }
 
-
-    update() {
-        const currentTime = Date.now();
-        if (currentTime - this.lastSpawnTime >= this.spawnInterval) {
-            this.createAndMoveWord();
-            this.lastSpawnTime = currentTime;
-        }
-
-        for (let i = this.activeWords.length - 1; i >= 0; i--) {
-            const word = this.activeWords[i];
-            word.posY += word.speed;
-            word.element.style.top = word.posY + "px";
-
-            if (word.posY > this.playerPosY) {
-                this.container.removeChild(word.element);
-                this.activeWords.splice(i, 1);
-            }
-
-            if (word.posY > this.container.offsetHeight) {
-                this.container.removeChild(word.element);
-                this.activeWords.splice(i, 1);
-            }
-
-            this.player.bullets.forEach((bullet) => {
-                if (bullet.checkCollision(word.element)) {
-                    bullet.showExplosion(
-                        word.element.offsetLeft,
-                        word.element.offsetTop,
-                        word.element.offsetWidth,
-                        word.element.offsetHeight
-                    );
-                    bullet.element.remove()
-                    word.element.remove()
-                    this.activeWords = this.activeWords.filter(activeWord => activeWord !== word)
-                    window.cancelAnimationFrame(bullet.animationId)
-                    this.player.bullets = this.player.bullets.filter(activeBullet => activeBullet !== bullet)
-                   
-                }
-            });
-
-        }
-
-        requestAnimationFrame(() => this.update());
+    stop() {
+     this.keepUpdating = false;
     }
 
-    
+
+    update() {
+        if (this.keepUpdating) {
+            const currentTime = Date.now();
+            if (currentTime - this.lastSpawnTime >= this.spawnInterval) {
+                this.createAndMoveWord();
+                this.lastSpawnTime = currentTime;
+            }
+
+            for (let i = this.activeWords.length - 1; i >= 0; i--) {
+                const word = this.activeWords[i];
+                word.posY += word.speed;
+                word.element.style.top = word.posY + "px";
+
+                if (word.posY > this.playerPosY) {
+                    this.container.removeChild(word.element);
+                    this.activeWords.splice(i, 1);
+                }
+
+                if (word.posY > this.container.offsetHeight) {
+                    this.container.removeChild(word.element);
+                    this.activeWords.splice(i, 1);
+                }
+
+                this.player.bullets.forEach((bullet) => {
+                    if (bullet.checkCollision(word.element)) {
+                        bullet.showExplosion(
+                            word.element.offsetLeft,
+                            word.element.offsetTop,
+                            word.element.offsetWidth,
+                            word.element.offsetHeight
+                        );
+                        bullet.element.remove()
+                        word.element.remove()
+                        this.activeWords = this.activeWords.filter(activeWord => activeWord !== word)
+                        window.cancelAnimationFrame(bullet.animationId)
+                        this.player.bullets = this.player.bullets.filter(activeBullet => activeBullet !== bullet)
+
+                    }
+                });
+
+            }
+
+            requestAnimationFrame(() => this.update());
+        } else {
+            console.log("Finished Game");
+        }
+    }
+
+
 
     getRandomWord() {
         const wordSet = this.allWords[Math.floor(Math.random() * this.allWords.length)];

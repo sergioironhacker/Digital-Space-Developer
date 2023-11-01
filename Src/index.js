@@ -10,7 +10,7 @@ window.addEventListener("load", () => {
 
 
     let game = null;
-    let timeLeft = 30;
+    let timeLeft = 7;
     let timerInterval;
 
 
@@ -22,10 +22,6 @@ window.addEventListener("load", () => {
             instructions.style.display = "none";
         }
     });
-
-
-
-
 
 
 
@@ -46,23 +42,15 @@ window.addEventListener("load", () => {
 
 
 
-
-
-
     function updateTimer() {
         timerElement.textContent = timeLeft;
         timeLeft--;
-
+        
         if (timeLeft < 0) {
-
-
             clearInterval(timerInterval);
+            game.words.stop();
         }
     }
-
-
-
-
 
 
     startButton.addEventListener('click', () => {
@@ -78,9 +66,6 @@ window.addEventListener("load", () => {
             game.player.move(e);
 
         });
-
-
-
 
         document.addEventListener('click', (e) => {
             if (game && game.player) {

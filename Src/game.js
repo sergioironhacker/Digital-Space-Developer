@@ -3,8 +3,5 @@ class Game {
         this.container = container;
         this.player = new Player(this.container);
         this.words = new Words(this.container, this.player);
-
-
-
     }
 }
