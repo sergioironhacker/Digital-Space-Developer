@@ -38,11 +38,11 @@ class Words {
         const wordElement = this.createWordElement(randomWord, posX, posY);
 
         this.container.appendChild(wordElement);
-        this.activeWords.push({ element: wordElement, posY, speed: this.wordSpeed });
+        this.activeWords.push({ element: wordElement, posY, speed: this.wordSpeed, name: randomWord});
     }
 
     stop() {
-     this.keepUpdating = false;
+        this.keepUpdating = false;
     }
 
 
@@ -82,12 +82,15 @@ class Words {
                         this.activeWords = this.activeWords.filter(activeWord => activeWord !== word)
                         window.cancelAnimationFrame(bullet.animationId)
                         this.player.bullets = this.player.bullets.filter(activeBullet => activeBullet !== bullet)
-
+                        // aqui sumo
+                        if (this.allWords[0].includes(word.name)) {
+                            this.player.updateScore();
+                        }
                     }
                 });
 
             }
-
+    
             requestAnimationFrame(() => this.update());
         } else {
             console.log("Finished Game");
