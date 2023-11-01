@@ -6,7 +6,6 @@ class Player {
         this.x = (this.container.offsetWidth / 2) - (this.width / 2);
         this.y = this.container.offsetHeight - this.height - 20;
         this.bullets = [];
-        this.live = document.querySelector('i');
         this.lives = 3;
         this.score = 0;
 
@@ -26,7 +25,7 @@ class Player {
 
     }
 
-    shoot() {
+        shoot() {
         const playerX = this.x + this.width / 14;
         const playerY = this.y + this.height;
         this.bullets.push(
@@ -47,6 +46,12 @@ class Player {
     updateScore() {
         this.score = this.score + 1;
         document.getElementById("points").innerHTML = this.score;
+    }
+
+    updateLives() {
+        this.lives = this.lives - 1;
+        document.getElementById("live").innerHTML = this.lives;
+
     }
 }
 

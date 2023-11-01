@@ -10,7 +10,7 @@ window.addEventListener("load", () => {
 
 
     let game = null;
-    let timeLeft = 7;
+    let timeLeft = 15;
     let timerInterval;
 
 
@@ -68,23 +68,7 @@ window.addEventListener("load", () => {
         });
 
         document.addEventListener('click', (e) => {
-            if (game && game.player) {
-                const bullet = game.player.shoot();
-
-                if (bullet) {
-                    game.words.activeWords.forEach((word) => {
-                        if (bullet.checkCollision(word.element)) {
-                            bullet.showExplosion(
-                                word.element.offsetLeft,
-                                word.element.offsetTop,
-                                word.element.offsetWidth,
-                                word.element.offsetHeight
-                            );
-                            // Agrega aquí la lógica para eliminar la palabra y aumentar el puntaje
-                        }
-                    });
-                }
-            }
+            game.player.shoot();
         });
     });
 });

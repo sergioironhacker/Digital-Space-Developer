@@ -26,6 +26,7 @@ class Words {
         this.lastSpawnTime = 0;
         this.spawnInterval = 3000;
         this.wordSpeed = 2;
+        this.animationId = null;
 
         this.update();
 
@@ -38,66 +39,67 @@ class Words {
         const wordElement = this.createWordElement(randomWord, posX, posY);
 
         this.container.appendChild(wordElement);
-        this.activeWords.push({ element: wordElement, posY, speed: this.wordSpeed, name: randomWord});
+        this.activeWords.push({ element: wordElement, posY, speed: this.wordSpeed, name: randomWord });
     }
 
     stop() {
-        this.keepUpdating = false;
+        window.cancelAnimationFrame(this.animationId);
     }
 
 
     update() {
-        if (this.keepUpdating) {
-            const currentTime = Date.now();
-            if (currentTime - this.lastSpawnTime >= this.spawnInterval) {
-                this.createAndMoveWord();
-                this.lastSpawnTime = currentTime;
+
+        const currentTime = Date.now();
+        if (currentTime - this.lastSpawnTime >= this.spawnInterval) {
+            this.createAndMoveWord();
+            this.lastSpawnTime = currentTime;
+        }
+
+        for (let i = this.activeWords.length - 1; i >= 0; i--) {
+            const word = this.activeWords[i];
+            word.posY += word.speed;
+            word.element.style.top = word.posY + "px";
+
+            if (word.posY > this.playerPosY) {
+                this.container.removeChild(word.element);
+                this.activeWords.splice(i, 1);
             }
 
-            for (let i = this.activeWords.length - 1; i >= 0; i--) {
-                const word = this.activeWords[i];
-                word.posY += word.speed;
-                word.element.style.top = word.posY + "px";
+            if (word.posY > this.container.offsetHeight) {
+                this.container.removeChild(word.element);
+                this.activeWords.splice(i, 1);
+            }
 
-                if (word.posY > this.playerPosY) {
-                    this.container.removeChild(word.element);
-                    this.activeWords.splice(i, 1);
-                }
-
-                if (word.posY > this.container.offsetHeight) {
-                    this.container.removeChild(word.element);
-                    this.activeWords.splice(i, 1);
-                }
-
-                this.player.bullets.forEach((bullet) => {
-                    if (bullet.checkCollision(word.element)) {
-                        bullet.showExplosion(
-                            word.element.offsetLeft,
-                            word.element.offsetTop,
-                            word.element.offsetWidth,
-                            word.element.offsetHeight
-                        );
-                        bullet.element.remove()
-                        word.element.remove()
-                        this.activeWords = this.activeWords.filter(activeWord => activeWord !== word)
-                        window.cancelAnimationFrame(bullet.animationId)
-                        this.player.bullets = this.player.bullets.filter(activeBullet => activeBullet !== bullet)
-                        // aqui sumo
-                        if (this.allWords[0].includes(word.name)) {
-                            this.player.updateScore();
+            this.player.bullets.forEach((bullet) => {
+                if (bullet.checkCollision(word.element)) {
+                    bullet.showExplosion(
+                        word.element.offsetLeft,
+                        word.element.offsetTop,
+                        word.element.offsetWidth,
+                        word.element.offsetHeight
+                    );
+                    bullet.element.remove()
+                    word.element.remove()
+                    this.activeWords = this.activeWords.filter(activeWord => activeWord !== word)
+                    window.cancelAnimationFrame(bullet.animationId)
+                    this.player.bullets = this.player.bullets.filter(activeBullet => activeBullet !== bullet)
+                    
+                    if (this.allWords[0].includes(word.name)) {
+                        this.player.updateScore();
+                    } else {
+                        this.player.updateLives();
+                        if (this.player.lives < 1) {
+                            this.stop();
                         }
                     }
-                });
+                }
+            });
 
-            }
-    
-            requestAnimationFrame(() => this.update());
-        } else {
-            console.log("Finished Game");
         }
+
+        this.animationId = requestAnimationFrame(() => this.update());
+
     }
-
-
 
     getRandomWord() {
         const wordSet = this.allWords[Math.floor(Math.random() * this.allWords.length)];
