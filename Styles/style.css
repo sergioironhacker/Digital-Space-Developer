@@ -3,9 +3,7 @@ body {
   padding: 0;
   height: 100%;
   overflow: hidden;
-
 }
-
 
 #lives {
   position: absolute;
@@ -52,8 +50,6 @@ i {
   cursor: pointer;
 }
 
-
-
 #countdown {
   position: absolute;
   color: greenyellow;
@@ -63,33 +59,26 @@ i {
   background-color: none;
   padding: 10px;
   font-size: 24px;
-
 }
-
 
 #timer {
-  color: tomato
+  color: tomato;
 }
-
 
 #score {
   position: absolute;
   top: 20px;
-  left: 50%;
+  left: 47%;
   color: greenyellow;
   font-weight: bold;
   background-color: none;
   padding: 10px;
   font-size: 24px;
-
-
 }
-
 
 #points {
-  color: tomato
+  color: tomato;
 }
-
 
 #play-music-button {
   position: absolute;
@@ -102,18 +91,16 @@ i {
   cursor: pointer;
   top: 260px;
   left: 10px;
-
 }
 
 #explosion {
   position: absolute;
   display: none;
-  background: url('../assets/explosion.gif');
+  background: url("../assets/explosion.gif");
   width: 200px;
   height: 200px;
   background-position: center;
   border-radius: 50%;
-
 }
 
 #instructions-button {
@@ -143,13 +130,155 @@ i {
   text-align: center;
 }
 
-
 p {
-  color:rgb(240, 241, 243);
-  font-family: "Arial", sans-serif; 
-  font-size: 20px; 
-  padding: 10px; 
+  color: rgb(240, 241, 243);
+  font-family: "Arial", sans-serif;
+  font-size: 20px;
+  padding: 10px;
   -webkit-text-stroke: 2px rgba(1, 238, 139, 0.2);
-  text-shadow: -8px -8px 8px rgba(0, 255, 255, 1.8)
- 
+  text-shadow: -8px -8px 8px rgba(0, 255, 255, 1.8);
 }
+
+#you-win {
+  position: absolute;
+  color: rgb(166, 248, 43) !important;
+  font-size: 50px;
+  top: 50%;
+  left: 42%;
+  transform: translate(-50%, -50%);
+  display: none;
+  text-align: center;
+  text-shadow: 0px 0px 20px rgb(30, 207, 83);
+  animation: bounce 1s ease infinite, color-change 1s ease infinite;
+}
+
+@keyframes bounce {
+    0% {
+        transform: translateY(0) rotate(0deg);
+    }
+    25% {
+        transform: translateY(-20px) rotate(10deg);
+    }
+    50% {
+        transform: translateY(0) rotate(0deg);
+    }
+    75% {
+        transform: translateY(-20px) rotate(-10deg);
+    }
+    100% {
+        transform: translateY(0) rotate(0deg);
+    }
+}
+
+@keyframes color-change {
+    0% {
+        color: rgb(0, 255, 34);
+    }
+    25% {
+        color: rgb(19, 85, 60);
+    }
+    50% {
+        color: rgb(0, 128, 32);
+    }
+    75% {
+        color: rgb(19, 53, 3);
+    }
+    100% {
+        color: rgb(85, 190, 90);
+    }
+}
+
+#game-over {
+  position: absolute;
+  color: rgb(183, 36, 36);
+  font-size: 50px;
+  top: 50%;
+  left: 42%;
+  transform: translate(-50%, -50%);
+  display: none;
+  text-align: center;
+  text-shadow: 0px 0px 20px rgb(146, 4, 89);
+  animation: bounce 1s ease infinite, color-change 1s ease infinite;
+}
+
+@keyframes bounce {
+    0% {
+        transform: translateY(0) rotate(0deg);
+    }
+    25% {
+        transform: translateY(-20px) rotate(10deg);
+    }
+    50% {
+        transform: translateY(0) rotate(0deg);
+    }
+    75% {
+        transform: translateY(-20px) rotate(-10deg);
+    }
+    100% {
+        transform: translateY(0) rotate(0deg);
+    }
+}
+
+@keyframes color-change {
+    0% {
+        color: red;
+    }
+    25% {
+        color: rgb(85, 27, 19);
+    }
+    50% {
+        color: rgb(128, 0, 28);
+    }
+    75% {
+        color: rgb(10, 7, 8);
+    }
+    100% {
+        color: rgb(190, 85, 85);
+    }
+}
+
+#restart-button {
+  display: none;
+  background-color: #2b2181;
+  color: white;
+  border: none;
+  font-weight: bold;
+  border-radius: 50px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  justify-content: center;
+  align-items: center;
+  height: 80px;
+  width: 120px;
+  position: absolute;
+  top: 45%;
+  left: 51%;
+  transform: translate(-50%, -50%);
+  box-shadow: 0px 0px 38px 28px rgba(19, 13, 187, 0.8);
+}
+
+#restart-button:hover {
+  background-color: #0edbde; 
+}
+
+
+#level {
+
+  position: absolute;
+  top: 80px;
+  right: 5%;
+  color: greenyellow;
+  font-weight: bold;
+  background-color: none;
+  padding: 10px;
+  font-size: 24px;
+}
+
+
+
+
+
+
+

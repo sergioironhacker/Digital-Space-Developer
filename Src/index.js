@@ -7,13 +7,14 @@ window.addEventListener("load", () => {
     const playMusicButton = document.getElementById("play-music-button");
     const instructionsButton = document.getElementById("instructions-button");
     const instructions = document.getElementById("instructions");
+    const restartButton = document.getElementById("restart-button");
 
 
     let game = null;
     let timeLeft = 60;
     let timerInterval;
 
-
+    restartButton.onclick = () => window.location.reload()
 
     instructionsButton.addEventListener("click", () => {
         if (instructions.style.display === "none" || instructions.style.display === "") {
@@ -45,12 +46,51 @@ window.addEventListener("load", () => {
     function updateTimer() {
         timerElement.textContent = timeLeft;
         timeLeft--;
-        
-        if (timeLeft < 0 || game.player.lives === 0) {
+
+        const gameOverCondition = timeLeft < 0 || (game.player.lives === 0)
+        const winCondition = game.player.score >= 5
+
+        if (gameOverCondition || winCondition) {
             clearInterval(timerInterval);
-            game.words.stop();
+            if (game && game.words) {
+                game.words.stop();
+            }
+
+            if (gameOverCondition) {
+                document.getElementById("game-over").style.display = "block";
+                restartButton.style.display = "flex"
+                playLoseMusic();
+            }
+
+            if (winCondition) {
+                document.getElementById("you-win").style.display = "block";
+                document.getElementById("restart-button").style.display = "flex"
+                playWinMusic();
+            }
+        }
+
+    }
+
+
+
+    function playLoseMusic() {
+        const loseMusic = document.getElementById("lose-music");
+        if (loseMusic) {
+            loseMusic.play();
         }
     }
+
+
+
+    function playWinMusic() {
+        const winMusic = document.getElementById("win-music");
+        if (winMusic) {
+            winMusic.play();
+        }
+    }
+
+
+
 
 
     startButton.addEventListener('click', () => {
@@ -60,6 +100,10 @@ window.addEventListener("load", () => {
         backgroundMusic.pause();
         timerInterval = setInterval(updateTimer, 1000);
         game = new Game(container);
+
+
+        document.getElementById("game-over").style.display = "none";
+
 
 
         document.addEventListener('mousemove', (e) => {

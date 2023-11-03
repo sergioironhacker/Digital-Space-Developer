@@ -4,6 +4,8 @@ class Words {
         this.width = 50;
         this.height = 50;
 
+        this.wordSpeed = 2;
+
         this.activeWords = [];
         this.player = player;
         this.playerPosY = player.y;
@@ -14,10 +16,10 @@ class Words {
                 "class", "constructor", "prototype", "async", "await", "map",
                 "filter", "reduce", "promise", "import", "export"],
 
-            ["serpiente python", "java", "csharp", "ruby", "php", "Dominio del DOM", "Carlos++",
-                "html", "css", "typescript", "scala", "chat gpt", "Macallan", "perl",
-                "sql", "caca", "Use", "lua", "Thor", "esvastik", "Hellow, Wordl!", "pascal",
-                "haskell", "ironHack", "prolog"]
+            ["serpiente python", "java", "❓❓❓", "ruby", "php", "Dominio del DOM", "Carlos++",
+                "html", "css", "typescript", "scala", "chat gpt", "Macallan", "❓❓❓",
+                "❓❓❓", "caca", "Use", "lua", "Thor", "esvastik", "Hellow, Wordl!", "caca",
+                "haskell", "ironHack", "caca"]
         ];
 
 
@@ -29,6 +31,14 @@ class Words {
 
         this.update();
 
+    }
+
+
+
+    updateWordSpeed(score) {
+        if (score >= 2) {
+            this.wordSpeed = 7; 
+        }
     }
 
     createAndMoveWord() {
@@ -47,6 +57,8 @@ class Words {
 
 
     update() {
+
+        this.updateWordSpeed(this.player.score);
 
         const currentTime = Date.now();
         if (currentTime - this.lastSpawnTime >= this.spawnInterval) {
@@ -82,14 +94,19 @@ class Words {
                     this.activeWords = this.activeWords.filter(activeWord => activeWord !== word)
                     window.cancelAnimationFrame(bullet.animationId)
                     this.player.bullets = this.player.bullets.filter(activeBullet => activeBullet !== bullet)
-                    
+
                     if (this.allWords[0].includes(word.name)) {
                         this.player.updateScore();
+                        if (this.player.score >= 5) {
+                            document.getElementById("you-win").style.display = "block";
+                            document.getElementById("restart-button").style.display = "flex"
+                            clearInterval(window.timerInterval);
+                        }
                     } else {
                         this.player.updateLives();
-                        if (this.player.lives < 1) {
-                            this.game.stop();
-                        }
+                        // if (this.player.lives < 1) {
+                        //     this.game.stop();
+                        // }
                     }
                 }
             });
@@ -97,7 +114,6 @@ class Words {
         }
 
         this.animationId = requestAnimationFrame(() => this.update());
-
     }
 
     getRandomWord() {

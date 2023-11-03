@@ -13,65 +13,93 @@
     <audio id="background-music" loop>
         <source src="./assets/sounds/bcmusic.mp3">
     </audio>
+
+    <audio id="lose-music">
+        <source src="./assets/sounds/game-over.mp3">
+    </audio>
+
+
+    <audio id="win-music">
+        <source src="./assets/sounds/you-win.mp3">
+    </audio>
+
+
     <img src="./assets/intro.png" id="background-image" class="center-image">
     <button id="start-button" class="center-button">Start Game</button>
 
 
-    <button  id="play-music-button">🎶</button>
+    <button id="play-music-button">🎶</button>
 
 
 
     <div id="instructions" style="display: none;">
         <h2>Instrucciones del juego</h2>
-        
-       
-    <p>¡Bienvenido al juego Digital Space Developer!</p>
-        <p> En este emocionante juego, te convertirás en un desarrollador espacial y aprenderás a programar en JavaScript mientras exploras el vasto universo digital.</p>
+
+
+        <p>¡Bienvenido al juego Digital Space Developer!</p>
+        <p> En este emocionante juego, te convertirás en un desarrollador espacial y aprenderás a programar en
+            JavaScript mientras exploras el vasto universo digital.</p>
         <p> Tu objetivo es resolver desafíos de programación para avanzar en tu misión. </p>
         <p>para mover tu ironNave solo tienes que mover el 🖱️</p>
         <p>y para disparar tu hackLaser pulsar click izquierdo</p>
         <p>Si estas listo pulsa el boton de start</p>
         <p>💻Suerte Ironhacker💻</p>
         <p>🚀 </p>
-
-        
-    
-    
     </div>
 
 
-    <button id="instructions-button" class="button">Instrucciones</button>
 
 
-    <audio id="laser-sound">
-        <source src="./assets/sounds/Laser-sonido.mp3" type="audio/mpeg">
-      </audio>
-
-      <audio id="explosion-sound">
-        <source src="./assets/sounds/explosion-sonido.mp3" type="audio/mpeg">
-      </audio>
 
 
-    <div id="game-board">
+
+    <div class="computer-screen">
+        <div class="screen-content">
+            <button id="instructions-button" class="button">Instrucciones</button>
 
 
-        <div id="explosion" style="display: none;">
-            <img src="./assets/explosion.gif" id="explosion">
+            <audio id="laser-sound">
+                <source src="./assets/sounds/Laser-sonido.mp3" type="audio/mpeg">
+            </audio>
+
+            <audio id="explosion-sound">
+                <source src="./assets/sounds/explosion-sonido.mp3" type="audio/mpeg">
+            </audio>
+
+
+            <div id="game-board">
+
+
+                <div id="explosion" style="display: none;">
+                    <img src="./assets/explosion.gif" id="explosion">
+                </div>
+                <div id="countdown">⏱️ Tiempo restante: <span id="timer">30</span></div>
+
+                <div id="score"> 👽 Score: <span id="points">0</span></div>
+
+                <div id="level">🚀 Nivel: <i>1</i></div>
+
+                <span id="lives">💙 Lives: <i id="live"> 5</i></span>
+
+                <div id="game-over" style="display: none;">
+                    <h1>You Lose</h1>
+
+                </div>
+
+                <div id="you-win" style="display: none;">
+                    <h1>You Win</h1>
+
+                </div>
+
+
+                <button id="restart-button">Restart Game</button>
+            </div>
         </div>
-        <div id="countdown">Tiempo restante: <span id="timer">30</span></div>
-
-        <div id="score">Score: <span id="points">0</span></div>
-
-        <span id="lives">Lives:<i id ="live" > 5</i></span>
-
-
-
-    </div>
-    <script src="./src/words.js"></script>
-    <script src="./src/laser.js"></script>
-    <script src="./src/player.js"></script>
-    <script src="./src/game.js"></script>
-    <script src="./src/index.js"></script>
+        <script src="./src/words.js"></script>
+        <script src="./src/laser.js"></script>
+        <script src="./src/player.js"></script>
+        <script src="./src/game.js"></script>
+        <script src="./src/index.js"></script>
 </body>
 
 </html>

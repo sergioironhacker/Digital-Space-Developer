@@ -25,7 +25,7 @@ class Player {
 
     }
 
-        shoot() {
+    shoot() {
         const playerX = this.x + this.width / 14;
         const playerY = this.y + this.height;
         this.bullets.push(
@@ -46,6 +46,13 @@ class Player {
     updateScore() {
         this.score = this.score + 1;
         document.getElementById("points").innerHTML = this.score;
+        if (this.score === 2) {
+            const levelElement = document.getElementById("level");
+            levelElement.innerHTML = `🛸 Nivel: <i>2</i>`; 
+        }
+
+
+
     }
 
     updateLives() {
