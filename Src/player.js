@@ -16,9 +16,9 @@ class Player {
         this.element.style.position = "absolute";
 
         if (selectedCharacter === "nave") {
-            this.element.style.backgroundImage = `url(./assets/nave.png)`;
+            this.element.style.backgroundImage = `url(./Assets/nave.png)`;
         } else if (selectedCharacter === "platillo") {
-            this.element.style.backgroundImage = `url(./assets/platillo.png)`;
+            this.element.style.backgroundImage = `url(./Assets/platillo.png)`;
         }
 
 

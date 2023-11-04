@@ -9,7 +9,7 @@ class Background {
 
         this.element = document.createElement("div");
         this.element.style.position = "absolute";
-        this.element.style.background = `url(./assets/espacio.jpeg)`;
+        this.element.style.background = `url(./Assets/espacio.jpeg)`;
         this.element.style.backgroundSize = "cover";
         this.element.style.backgroundPosition = "bottom";
         this.element.style.width = `${this.width}px`;

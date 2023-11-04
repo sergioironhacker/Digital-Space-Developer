@@ -20,7 +20,7 @@ i {
 }
 
 #game-board {
-  background-image: url(../assets/espacio.jpg);
+  background-image: url(../Assets/espacio.jpg);
   background-repeat: no-repeat;
   background-size: cover;
   height: 100vh;
@@ -96,7 +96,7 @@ i {
 #explosion {
   position: absolute;
   display: none;
-  background: url("../assets/explosion.gif");
+  background: url("../Assets/explosion.gif");
   width: 200px;
   height: 200px;
   background-position: center;
@@ -155,39 +155,39 @@ p {
 }
 
 @keyframes bounce {
-    0% {
-        transform: translateY(0) rotate(0deg);
-    }
-    25% {
-        transform: translateY(-20px) rotate(10deg);
-    }
-    50% {
-        transform: translateY(0) rotate(0deg);
-    }
-    75% {
-        transform: translateY(-20px) rotate(-10deg);
-    }
-    100% {
-        transform: translateY(0) rotate(0deg);
-    }
+  0% {
+    transform: translateY(0) rotate(0deg);
+  }
+  25% {
+    transform: translateY(-20px) rotate(10deg);
+  }
+  50% {
+    transform: translateY(0) rotate(0deg);
+  }
+  75% {
+    transform: translateY(-20px) rotate(-10deg);
+  }
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
 }
 
 @keyframes color-change {
-    0% {
-        color: rgb(0, 255, 34);
-    }
-    25% {
-        color: rgb(19, 85, 60);
-    }
-    50% {
-        color: rgb(0, 128, 32);
-    }
-    75% {
-        color: rgb(19, 53, 3);
-    }
-    100% {
-        color: rgb(85, 190, 90);
-    }
+  0% {
+    color: rgb(0, 255, 34);
+  }
+  25% {
+    color: rgb(19, 85, 60);
+  }
+  50% {
+    color: rgb(0, 128, 32);
+  }
+  75% {
+    color: rgb(19, 53, 3);
+  }
+  100% {
+    color: rgb(85, 190, 90);
+  }
 }
 
 #game-over {
@@ -204,39 +204,39 @@ p {
 }
 
 @keyframes bounce {
-    0% {
-        transform: translateY(0) rotate(0deg);
-    }
-    25% {
-        transform: translateY(-20px) rotate(10deg);
-    }
-    50% {
-        transform: translateY(0) rotate(0deg);
-    }
-    75% {
-        transform: translateY(-20px) rotate(-10deg);
-    }
-    100% {
-        transform: translateY(0) rotate(0deg);
-    }
+  0% {
+    transform: translateY(0) rotate(0deg);
+  }
+  25% {
+    transform: translateY(-20px) rotate(10deg);
+  }
+  50% {
+    transform: translateY(0) rotate(0deg);
+  }
+  75% {
+    transform: translateY(-20px) rotate(-10deg);
+  }
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
 }
 
 @keyframes color-change {
-    0% {
-        color: red;
-    }
-    25% {
-        color: rgb(85, 27, 19);
-    }
-    50% {
-        color: rgb(128, 0, 28);
-    }
-    75% {
-        color: rgb(10, 7, 8);
-    }
-    100% {
-        color: rgb(190, 85, 85);
-    }
+  0% {
+    color: red;
+  }
+  25% {
+    color: rgb(85, 27, 19);
+  }
+  50% {
+    color: rgb(128, 0, 28);
+  }
+  75% {
+    color: rgb(10, 7, 8);
+  }
+  100% {
+    color: rgb(190, 85, 85);
+  }
 }
 
 #restart-button {
@@ -262,12 +262,10 @@ p {
 }
 
 #restart-button:hover {
-  background-color: #0edbde; 
+  background-color: #0edbde;
 }
 
-
 #level {
-
   position: absolute;
   top: 80px;
   right: 5%;
@@ -291,7 +289,6 @@ p {
   width: 300px;
   border-radius: 20%;
   box-shadow: 0px 0px 38px 28px rgba(19, 13, 187, 0.8);
-
 }
 
 #character-selection h2 {
@@ -304,9 +301,6 @@ p {
   margin: 10px;
   cursor: pointer;
   transition: transform 0.2s;
-  
-
-
 }
 
 .character-option img {
@@ -331,7 +325,6 @@ p {
   top: 45%;
   left: 65%;
   position: absolute;
-  
 }
 
 #dance-character2 img {
@@ -340,6 +333,3 @@ p {
   left: 60%;
   position: absolute;
 }
-
-
-
