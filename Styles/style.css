@@ -3,6 +3,7 @@ body {
   padding: 0;
   height: 100%;
   overflow: hidden;
+  
 }
 
 #lives {
@@ -332,4 +333,10 @@ p {
   top: 45%;
   left: 60%;
   position: absolute;
+}
+
+
+html {
+  cursor: url('../Assets/cursor1.cur'), auto;
+  color: greenyellow;
 }
