@@ -8,13 +8,26 @@ window.addEventListener("load", () => {
     const instructionsButton = document.getElementById("instructions-button");
     const instructions = document.getElementById("instructions");
     const restartButton = document.getElementById("restart-button");
+    const characterSelection = document.getElementById("character-selection");
 
-
+    let selectedCharacter = null;
     let game = null;
     let timeLeft = 60;
     let timerInterval;
 
     restartButton.onclick = () => window.location.reload()
+
+
+
+
+    const characterOptions = document.querySelectorAll(".character-option");
+    characterOptions.forEach(option => {
+        option.addEventListener("click", () => {
+            characterOptions.forEach(opt => opt.classList.remove("selected"));
+            option.classList.add("selected");
+            selectedCharacter = option.getAttribute("data-character");
+        });
+    });
 
     instructionsButton.addEventListener("click", () => {
         if (instructions.style.display === "none" || instructions.style.display === "") {
@@ -59,12 +72,14 @@ window.addEventListener("load", () => {
             if (gameOverCondition) {
                 document.getElementById("game-over").style.display = "block";
                 restartButton.style.display = "flex"
+                document.getElementById("dance-character2").style.display = "block";
                 playLoseMusic();
             }
 
             if (winCondition) {
                 document.getElementById("you-win").style.display = "block";
-                document.getElementById("restart-button").style.display = "flex"
+                document.getElementById("restart-button").style.display = "flex";
+                document.getElementById("dance-character").style.display = "block";
                 playWinMusic();
             }
         }
@@ -92,14 +107,15 @@ window.addEventListener("load", () => {
 
 
 
-
     startButton.addEventListener('click', () => {
+
         instructionsButton.style.display = "none";
         startContainer.style.display = 'none';
         startButton.style.display = 'none';
         backgroundMusic.pause();
         timerInterval = setInterval(updateTimer, 1000);
-        game = new Game(container);
+        game = new Game(container, selectedCharacter || 'nave')
+        characterSelection.style.display = "none";
 
 
         document.getElementById("game-over").style.display = "none";

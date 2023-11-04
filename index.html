@@ -40,6 +40,7 @@
         <p> En este emocionante juego, te convertirás en un desarrollador espacial y aprenderás a programar en
             JavaScript mientras exploras el vasto universo digital.</p>
         <p> Tu objetivo es resolver desafíos de programación para avanzar en tu misión. </p>
+        <p>Seleciona la nave con la que quieres jugar 🚀 o 🛸</p>
         <p>para mover tu ironNave solo tienes que mover el 🖱️</p>
         <p>y para disparar tu hackLaser pulsar click izquierdo</p>
         <p>Si estas listo pulsa el boton de start</p>
@@ -53,53 +54,78 @@
 
 
 
-    <div class="computer-screen">
-        <div class="screen-content">
-            <button id="instructions-button" class="button">Instrucciones</button>
+
+    <button id="instructions-button" class="button">Instrucciones</button>
 
 
-            <audio id="laser-sound">
-                <source src="./assets/sounds/Laser-sonido.mp3" type="audio/mpeg">
-            </audio>
+    <audio id="laser-sound">
+        <source src="./assets/sounds/Laser-sonido.mp3" type="audio/mpeg">
+    </audio>
 
-            <audio id="explosion-sound">
-                <source src="./assets/sounds/explosion-sonido.mp3" type="audio/mpeg">
-            </audio>
-
-
-            <div id="game-board">
+    <audio id="explosion-sound">
+        <source src="./assets/sounds/explosion-sonido.mp3" type="audio/mpeg">
+    </audio>
 
 
-                <div id="explosion" style="display: none;">
-                    <img src="./assets/explosion.gif" id="explosion">
-                </div>
-                <div id="countdown">⏱️ Tiempo restante: <span id="timer">30</span></div>
-
-                <div id="score"> 👽 Score: <span id="points">0</span></div>
-
-                <div id="level">🚀 Nivel: <i>1</i></div>
-
-                <span id="lives">💙 Lives: <i id="live"> 5</i></span>
-
-                <div id="game-over" style="display: none;">
-                    <h1>You Lose</h1>
-
-                </div>
-
-                <div id="you-win" style="display: none;">
-                    <h1>You Win</h1>
-
-                </div>
+    <div id="game-board">
 
 
-                <button id="restart-button">Restart Game</button>
+
+        <div id="character-selection">
+            <h2>Selecciona tu personaje</h2>
+            <div class="character-option selected" data-character="nave">
+                <img src="./assets/nave.png" alt="Nave Espacial">
+                <p>HackNave</p>
+            </div>
+            <div class="character-option" data-character="platillo">
+                <img src="./assets/platillo.png" alt="Platillo Volante">
+                <p>IronOvni</p>
             </div>
         </div>
-        <script src="./src/words.js"></script>
-        <script src="./src/laser.js"></script>
-        <script src="./src/player.js"></script>
-        <script src="./src/game.js"></script>
-        <script src="./src/index.js"></script>
+
+
+
+        <div id="dance-character" style="display: none;">
+            <img src="./assets/dance.gif" alt="Personaje bailando">
+        </div>
+
+
+        <div id="dance-character2" style="display: none;">
+            <img src="./assets/dance2.gif" alt="Personaje bailando">
+        </div>
+
+
+
+        <div id="explosion" style="display: none;">
+            <img src="./assets/explosion.gif" id="explosion">
+        </div>
+        <div id="countdown">⏱️ Tiempo restante: <span id="timer">30</span></div>
+
+        <div id="score"> 👽 Score: <span id="points">0</span></div>
+
+        <div id="level">🚀 Nivel: <i>1</i></div>
+
+        <span id="lives">💙 Lives: <i id="live"> 5</i></span>
+
+        <div id="game-over" style="display: none;">
+            <h1>You Lose</h1>
+
+        </div>
+
+        <div id="you-win" style="display: none;">
+            <h1>You Win</h1>
+
+        </div>
+
+
+        <button id="restart-button">Restart Game</button>
+
+    </div>
+    <script src="./src/words.js"></script>
+    <script src="./src/laser.js"></script>
+    <script src="./src/player.js"></script>
+    <script src="./src/game.js"></script>
+    <script src="./src/index.js"></script>
 </body>
 
 </html>

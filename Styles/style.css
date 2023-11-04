@@ -105,17 +105,18 @@ i {
 
 #instructions-button {
   position: absolute;
-  bottom: 20px;
-  left: 52%;
+  bottom: 80px;
+  left: 51%;
   transform: translateX(-50%);
   background-color: #021c5f;
-  color: white;
+  color: greenyellow;
   padding: 10px 20px;
   border: none;
   border-radius: 5px;
   cursor: pointer;
   font-weight: bold;
   font-size: 16px;
+  box-shadow: 0px 0px 38px 28px rgba(19, 13, 187, 0.8);
 }
 
 #instructions {
@@ -124,10 +125,11 @@ i {
   left: 50%;
   transform: translate(-50%, -50%);
   background-color: rgba(0, 0, 0, 0.7);
-  color: white;
+  color: greenyellow;
   padding: 20px;
   display: none;
   text-align: center;
+  box-shadow: 0px 0px 38px 28px rgba(19, 13, 187, 0.8);
 }
 
 p {
@@ -276,9 +278,68 @@ p {
   font-size: 24px;
 }
 
+#character-selection {
+  background-color: #021c5f;
+  color: greenyellow;
+  text-align: center;
+  padding: 20px;
+  border-radius: 10px;
+  position: absolute;
+  top: 70%;
+  left: 85%;
+  transform: translate(-50%, -50%);
+  width: 300px;
+  border-radius: 20%;
+  box-shadow: 0px 0px 38px 28px rgba(19, 13, 187, 0.8);
+
+}
+
+#character-selection h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.character-option {
+  display: inline-block;
+  margin: 10px;
+  cursor: pointer;
+  transition: transform 0.2s;
+  
 
 
+}
 
+.character-option img {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  border: 2px solid transparent;
+}
+
+.character-option p {
+  font-size: 16px;
+}
+
+.character-option.selected {
+  transform: scale(1.1);
+  border: 2px solid rgb(3, 219, 252);
+  border-radius: 10%;
+}
+
+#dance-character img {
+  width: 150px;
+  top: 45%;
+  left: 65%;
+  position: absolute;
+  
+}
+
+#dance-character2 img {
+  width: 180px;
+  top: 45%;
+  left: 60%;
+  position: absolute;
+}
 
 
 

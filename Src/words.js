@@ -11,15 +11,15 @@ class Words {
         this.playerPosY = player.y;
         this.keepUpdating = true;
         this.allWords = [
-            ["variable", "funcion", "if", "else", "for", "while", "console",
+            ["finally()", "function", "if", "else", "for", "while", "then()",
                 "array", "object", "return", "true", "false", "null", "undefined",
-                "class", "constructor", "prototype", "async", "await", "map",
-                "filter", "reduce", "promise", "import", "export"],
+                "class", "constructor", "Callback", "async", "resolve", "map",
+                "filter", "reduce", "promise", "catch()", "reject"],
 
-            ["serpiente python", "java", "❓❓❓", "ruby", "php", "Dominio del DOM", "Carlos++",
-                "html", "css", "typescript", "scala", "chat gpt", "Macallan", "❓❓❓",
-                "❓❓❓", "caca", "Use", "lua", "Thor", "esvastik", "Hellow, Wordl!", "caca",
-                "haskell", "ironHack", "caca"]
+            ["serpiente python", "java", "🪐", "Carlos++", "MarcosDB", "Dominio del DOM", "Carlos++",
+                "html", "css", "typescript", "Pablo#", "Chat gpt", "Macallan", "👽",
+                "❓", "Pablo#", "Use", "MarcosDB", "Thor", "esvastik", "Hellow, Wordl!", "caca",
+                "haskell", "ironHack", "caca","🎃"]
         ];
 
 
@@ -104,9 +104,7 @@ class Words {
                         }
                     } else {
                         this.player.updateLives();
-                        // if (this.player.lives < 1) {
-                        //     this.game.stop();
-                        // }
+                        
                     }
                 }
             });

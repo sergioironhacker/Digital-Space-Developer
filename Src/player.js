@@ -1,5 +1,5 @@
 class Player {
-    constructor(container) {
+    constructor(container, selectedCharacter) {
         this.container = container;
         this.width = 120;
         this.height = 120;
@@ -10,16 +10,27 @@ class Player {
         this.score = 0;
 
 
+
         this.element = document.createElement("div");
 
         this.element.style.position = "absolute";
-        this.element.style.background = `url(./assets/nave.png)`;
+
+        if (selectedCharacter === "nave") {
+            this.element.style.backgroundImage = `url(./assets/nave.png)`;
+        } else if (selectedCharacter === "platillo") {
+            this.element.style.backgroundImage = `url(./assets/platillo.png)`;
+        }
+
+
+
+
         this.element.style.backgroundSize = "cover";
         this.element.style.width = `${this.width}px`;
         this.element.style.height = `${this.height}px`;
         this.element.style.left = `${this.x}px`;
         this.element.style.top = `${this.y}px`;
-
+        this.element.style.boxShadow = "0 0 20px white, 0 0 40px rgba(0, 0, 255, 0.7)";
+        this.element.style.borderRadius = "50%";
 
         this.container.appendChild(this.element);
 
@@ -48,7 +59,7 @@ class Player {
         document.getElementById("points").innerHTML = this.score;
         if (this.score === 2) {
             const levelElement = document.getElementById("level");
-            levelElement.innerHTML = `🛸 Nivel: <i>2</i>`; 
+            levelElement.innerHTML = `🛸 Nivel: <i>2</i>`;
         }
 
 
