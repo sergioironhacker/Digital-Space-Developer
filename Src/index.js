@@ -9,6 +9,12 @@ window.addEventListener("load", () => {
     const instructions = document.getElementById("instructions");
     const restartButton = document.getElementById("restart-button");
     const characterSelection = document.getElementById("character-selection");
+    const scoreElement = document.getElementById("score");
+    const livesElement = document.getElementById("lives"); 
+    const levelElement = document.getElementById("level");
+    const countdown = document.getElementById("countdown");
+
+
 
     let selectedCharacter = null;
     let game = null;
@@ -116,6 +122,11 @@ window.addEventListener("load", () => {
         timerInterval = setInterval(updateTimer, 1000);
         game = new Game(container, selectedCharacter || 'nave')
         characterSelection.style.display = "none";
+        timerElement.style.display = "block";
+        livesElement.style.display = "block";
+        scoreElement.style.display = "block";
+        levelElement.style.display = 'block';
+        countdown.style.display = 'block';
 
 
         document.getElementById("game-over").style.display = "none";

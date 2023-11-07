@@ -6,6 +6,28 @@ body {
   
 }
 
+#score,
+#lives,
+#timer,
+#level,
+#you-win,
+#game-over,
+#restart-button
+#countdown {
+  display: none;
+}
+
+
+
+#start-container {
+  background-image: url(../Assets/imagen_inicio.jpg); 
+  background-repeat: no-repeat;
+  background-size: contain;
+  height: 100vh;
+  overflow: hidden;
+  
+}
+
 #lives {
   position: absolute;
   top: 20px;
@@ -16,6 +38,9 @@ body {
   font-size: 24px;
 }
 
+
+
+
 i {
   color: tomato;
 }
@@ -23,6 +48,7 @@ i {
 #game-board {
   background-image: url(../Assets/espacio.jpg);
   background-repeat: no-repeat;
+  background-size: contain;
   background-size: cover;
   height: 100vh;
   overflow: hidden;
@@ -52,17 +78,20 @@ i {
 }
 
 #countdown {
+  display: none;
   position: absolute;
   color: greenyellow;
-  right: 20px;
+  right: 60px;
   top: 20px;
   font-weight: bold;
-  background-color: none;
   padding: 10px;
   font-size: 24px;
 }
 
+
+
 #timer {
+  
   color: tomato;
 }
 
@@ -109,7 +138,7 @@ i {
   bottom: 80px;
   left: 51%;
   transform: translateX(-50%);
-  background-color: #021c5f;
+  background-color: #294794;
   color: greenyellow;
   padding: 10px 20px;
   border: none;
@@ -117,7 +146,7 @@ i {
   cursor: pointer;
   font-weight: bold;
   font-size: 16px;
-  box-shadow: 0px 0px 38px 28px rgba(19, 13, 187, 0.8);
+  box-shadow: 0px 0px 38px 28px rgba(53, 49, 161, 0.8);
 }
 
 #instructions {
@@ -125,12 +154,12 @@ i {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background-color: rgba(0, 0, 0, 0.7);
+  background-color: rgba(12, 12, 19, 0.7);
   color: greenyellow;
   padding: 20px;
   display: none;
   text-align: center;
-  box-shadow: 0px 0px 38px 28px rgba(19, 13, 187, 0.8);
+  box-shadow: 0px 0px 38px 28px rgba(34, 30, 153, 0.8);
 }
 
 p {
@@ -242,7 +271,7 @@ p {
 
 #restart-button {
   display: none;
-  background-color: #2b2181;
+  background-color: #463e8b;
   color: white;
   border: none;
   font-weight: bold;
@@ -269,7 +298,7 @@ p {
 #level {
   position: absolute;
   top: 80px;
-  right: 5%;
+  left: 1%;
   color: greenyellow;
   font-weight: bold;
   background-color: none;
@@ -278,18 +307,19 @@ p {
 }
 
 #character-selection {
-  background-color: #021c5f;
+  background-color:none;
   color: greenyellow;
   text-align: center;
   padding: 20px;
   border-radius: 10px;
   position: absolute;
-  top: 70%;
-  left: 85%;
+  top: 33%;
+  left: 10%;
   transform: translate(-50%, -50%);
-  width: 300px;
+  width: 350px;
+  height: 200px;
   border-radius: 20%;
-  box-shadow: 0px 0px 38px 28px rgba(19, 13, 187, 0.8);
+ 
 }
 
 #character-selection h2 {
@@ -339,4 +369,31 @@ p {
 html {
   cursor: url('../Assets/cursor1.cur'), auto;
   color: greenyellow;
+}
+
+
+@media (max-width: 768px) {
+  body {
+      font-size: 14px;
+  }
+}
+
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  body {
+      font-size: 16px; 
+  }
+}
+
+@media (min-width: 1025px) {
+  body {
+      font-size: 18px; 
+  }
+}
+
+
+
+#background-image {
+  filter: brightness(0.7); 
+ 
 }
