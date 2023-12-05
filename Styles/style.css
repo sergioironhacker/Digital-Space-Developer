@@ -3,43 +3,30 @@ body {
   padding: 0;
   height: 100%;
   overflow: hidden;
-  
 }
 
-#score,
-#lives,
-#timer,
-#level,
-#you-win,
-#game-over,
-#restart-button
-#countdown {
+#score, #lives, #timer, #level, #you-win, #game-over, #restart-button, #countdown {
   display: none;
 }
 
-
-
 #start-container {
-  background-image: url(../Assets/imagen_inicio.jpg); 
+  background-image: url(../Assets/fondo-espacio.jpg);
   background-repeat: no-repeat;
-  background-size: contain;
+  background-size: cover;
   height: 100vh;
   overflow: hidden;
-  
 }
 
 #lives {
   position: absolute;
-  top: 20px;
-  left: 20px;
-  padding: 10px;
+  top: 2%;
+  left: 2%;
+  padding: 1.5%;
+  display: none;
   color: greenyellow;
   font-weight: bold;
-  font-size: 24px;
+  font-size: 2vw;
 }
-
-
-
 
 i {
   color: tomato;
@@ -48,7 +35,6 @@ i {
 #game-board {
   background-image: url(../Assets/espacio.jpg);
   background-repeat: no-repeat;
-  background-size: contain;
   background-size: cover;
   height: 100vh;
   overflow: hidden;
@@ -59,51 +45,95 @@ i {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  width: 100%;
+  height: 100%;
+  filter: brightness(1);
+  animation: pulseBrightness 5s infinite;
 }
+
+@keyframes pulseBrightness {
+  0% {
+    filter: brightness(0.7);
+  }
+  25% {
+    filter: brightness(0.5);
+  }
+  50% {
+    filter: brightness(0.6);
+  }
+  75% {
+    filter: brightness(0.7);
+  }
+  100% {
+    filter: brightness(0.8);
+  }
+}
+
+
+
+ /* @keyframes colorChange {
+  0% {
+    filter: hue-rotate(0deg);
+  }
+  100% {
+    filter: hue-rotate(360deg);
+  }
+}
+ */
+ 
 
 .center-button {
   position: absolute;
   top: 70%;
-  left: 51%;
+  left: 50%;
   transform: translate(-50%, -50%);
-  background-color: rgb(244, 213, 71);
-  color: rgb(9, 70, 127);
-  width: 100px;
-  height: 60px;
+  background-color: rgba(11, 60, 184, 0.8);
+  color: rgba(32, 218, 8, 0.8);
+  width: 15vw;
+  height: 8vw;
   font-weight: bold;
-  font-size: 16px;
-  border-radius: 50%;
-  border: 2px solid rgb(9, 70, 127);
+  font-size: 1.5vw;
+  border: none;
   cursor: pointer;
+  animation: blink 1.5s infinite;
+}
+
+@keyframes blink {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
 #countdown {
   display: none;
   position: absolute;
   color: greenyellow;
-  right: 60px;
-  top: 20px;
+  right: 6vw;
+  top: 2%;
   font-weight: bold;
-  padding: 10px;
-  font-size: 24px;
+  padding: 1.5%;
+  font-size: 2vw;
 }
 
-
-
 #timer {
-  
   color: tomato;
 }
 
 #score {
   position: absolute;
-  top: 20px;
+  top: 2%;
   left: 47%;
   color: greenyellow;
   font-weight: bold;
   background-color: none;
-  padding: 10px;
-  font-size: 24px;
+  padding: 1.5%;
+  font-size: 2vw;
 }
 
 #points {
@@ -147,7 +177,22 @@ i {
   font-weight: bold;
   font-size: 16px;
   box-shadow: 0px 0px 38px 28px rgba(53, 49, 161, 0.8);
+  animation: blink 1.5s infinite; 
+  
 }
+
+@keyframes blink {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
 
 #instructions {
   position: absolute;
@@ -289,7 +334,22 @@ p {
   left: 51%;
   transform: translate(-50%, -50%);
   box-shadow: 0px 0px 38px 28px rgba(19, 13, 187, 0.8);
+  animation: blink 1s infinite; 
+  
 }
+
+@keyframes blink {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
 
 #restart-button:hover {
   background-color: #0edbde;
@@ -307,20 +367,34 @@ p {
 }
 
 #character-selection {
-  background-color:none;
+  background-color: none;
   color: greenyellow;
   text-align: center;
   padding: 20px;
   border-radius: 10px;
-  position: absolute;
-  top: 33%;
-  left: 10%;
-  transform: translate(-50%, -50%);
+  position: fixed;
+  top: 30%; 
+  left: 50%; 
+  transform: translate(-50%, -50%); 
   width: 350px;
   height: 200px;
   border-radius: 20%;
- 
+  animation: blink 1.5s infinite; 
+  
 }
+
+@keyframes blink {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
 
 #character-selection h2 {
   font-size: 24px;
@@ -370,28 +444,6 @@ html {
   cursor: url('../Assets/cursor1.cur'), auto;
   color: greenyellow;
 }
-
-
-@media (max-width: 768px) {
-  body {
-      font-size: 14px;
-  }
-}
-
-
-@media (min-width: 769px) and (max-width: 1024px) {
-  body {
-      font-size: 16px; 
-  }
-}
-
-@media (min-width: 1025px) {
-  body {
-      font-size: 18px; 
-  }
-}
-
-
 
 #background-image {
   filter: brightness(0.7); 
